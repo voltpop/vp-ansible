@@ -1,0 +1,49 @@
+---
+# tasks file for warwalrux-workstation
+
+- name: "Add specified repository into sources list using specified filename"
+  ansible.builtin.apt_repository:
+    repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+
+- name: "Install Packages"
+  apt:
+    pkg:
+      - build-essential
+      - make
+      - gcc
+      - git
+      - subversion
+      - openjdk-11-jdk
+      - ssh
+      - vim
+      - google-chrome-stable
+      - htop
+      - geany
+      - nextcloud-desktop
+      - expect
+
+- name: "Install Slack"
+  community.general.snap:
+    name: "slack"
+    classic: yes
+
+- name: "Install Discord"
+  community.general.snap:
+    name: "discord"
+
+# Git personal tools
+
+- name: Check out private configs
+
+- name: Check out personal toolbox
+
+# Git Checkouts for ASF
+
+- name: Check out INFRA P6
+
+- name: Check out INFRA P3
+
+- name: Check out Infra-trunk
+
+
