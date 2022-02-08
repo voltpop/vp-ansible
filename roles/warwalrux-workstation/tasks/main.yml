@@ -7,7 +7,7 @@
     state: present
 
 - name: "Install Packages"
-  apt:
+  ansible.builtin.apt:
     pkg:
       - build-essential
       - make
@@ -32,18 +32,16 @@
   community.general.snap:
     name: "discord"
 
-# Git personal tools
+# Configure ASF Work area
+- name: "Configure ASF workspace"
+  ansible.builtin.file:
+    name: "{{ asfdir }}"
+    state: directory
 
-- name: Check out private configs
-
-- name: Check out personal toolbox
-
-# Git Checkouts for ASF
-
-- name: Check out INFRA P6
-
-- name: Check out INFRA P3
-
-- name: Check out Infra-trunk
-
-
+- name: Check out Infrastructure Repositories
+  ansible.builtin.git:
+    name: "git@github.com:apache/{{ repo }}.git"
+    dest: "/homeo/dfoulks/Restore/asf/{{ repo }}"
+  with_items:
+    - "infrastructure-puppet"
+    - "infrastructure-p6"
