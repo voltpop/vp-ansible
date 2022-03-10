@@ -10,6 +10,9 @@ With this repository configured to send a webhook to a voltpop-announce service 
 Listener services running on remote machines will know that it's time to git pull their own repositories 
 and refresh their configurations.
 
+* [vp-listener](https://github.com/voltpop/vp-listener)
+* [vp-announce](https://github.com/voltpop/vp-announce)
+
 ## Development
 
 This service is wrapped in pipenv, requiring only git and python3 to be present to configure a machine
@@ -20,3 +23,5 @@ To run an interactive development shell, use `pipenv shell`
 This will create a local development / running environment with all of the software pre-configured.
 
 For more information about pipenv, see: https://pipenv.pypa.io/en/latest/
+
+
