@@ -1,0 +1,25 @@
+---
+- hosts: webservers
+  sudo: yes
+  vars:
+  tasks:
+    - name: Pull VoltPop Listener Service git repo
+      ansible.builtin.git:
+        repo: https://github.com/voltpop/vp-listener
+        dest: /opt/vp-listener
+      notify: vp-listen
+
+    - name: Set up vp-listener service
+      ansible.builtin.file:
+        src: /opt/vp-listen/vp-listen.service
+        dest: /etc/systemd/system/vp-listen.service
+        state: link
+      notify: vp-listen
+  handlers:
+      - name: vp-listen
+        systemd:
+          daemon_reload: yes
+          state: started
+          enabled: yes
+          name: vp-listen
+

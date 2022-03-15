@@ -24,4 +24,3 @@ This will create a local development / running environment with all of the softw
 
 For more information about pipenv, see: https://pipenv.pypa.io/en/latest/
 
-
