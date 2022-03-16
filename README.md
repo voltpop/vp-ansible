@@ -23,4 +23,3 @@ To run an interactive development shell, use `pipenv shell`
 This will create a local development / running environment with all of the software pre-configured.
 
 For more information about pipenv, see: https://pipenv.pypa.io/en/latest/
-
