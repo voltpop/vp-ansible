@@ -15,7 +15,7 @@ and refresh their configurations.
 
 ## Configuration
 
-an .env file holds the path to the ansible config
+an .env file holds the path to the ansible config. This is going to be configured to use the root path of the current git checkout.
 
 ## Development
 
