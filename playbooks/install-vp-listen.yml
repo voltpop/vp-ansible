@@ -1,0 +1,6 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+    - name: "Run vp-listen role"
+      include_role:
+        name: "vp-listen"

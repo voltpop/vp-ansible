@@ -13,6 +13,10 @@ and refresh their configurations.
 * [vp-listener](https://github.com/voltpop/vp-listener)
 * [vp-announce](https://github.com/voltpop/vp-announce)
 
+## Configuration
+
+an .env file holds the path to the ansible config
+
 ## Development
 
 This service is wrapped in pipenv, requiring only git and python3 to be present to configure a machine
