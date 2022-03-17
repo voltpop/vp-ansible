@@ -16,8 +16,8 @@
 
 # Dump the configuration from the vaultfile
 - name: Configure the Listener service
-  ansible.builtin.template:
-    src: listen.yml.j2
+  ansible.builtin.copy:
+    content: "{{ listener_config | to_nice_yaml }}"
     dest: /opt/vp-listen/listen.yml
   notify: vp-listen
   become: yes
