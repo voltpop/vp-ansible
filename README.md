@@ -14,7 +14,8 @@ and refresh their configurations.
 
 ## Configuration
 
-an .env file holds the path to the ansible config. This is going to be configured to use the root path of the current git checkout.
+an .env file holds the path to the ansible config.
+* set ENVVAR `ANSIBLE_DIR` to the location of the checkout. pipenv's .env file will use that value.
 
 ## Development
 
