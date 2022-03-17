@@ -6,6 +6,13 @@
   notify: vp-listen
   become: yes
 
+- name: Configure the Listener service
+  ansible.buildin.template:
+    src: listen.yml.j2
+    dest: /opt/vp-listen/listen.yml
+  notify: vp-listen
+  become: yes
+
 - name: Set up vp-listener service
   ansible.builtin.file:
     src: /opt/vp-listen/vp-listen.service
