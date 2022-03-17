@@ -1,18 +1,28 @@
 ---
+# Neds both `-K` and `--ask-vault-pass`
+
+# Include the (non-default) vaulted vars file
+- name: Gathering Secret Datas
+  include_vars: vp-listen.vault
+
+# Fetch the Listener service
 - name: Pull VoltPop Listener Service git repo
   ansible.builtin.git:
     repo: https://github.com/voltpop/vp-listen
     dest: /opt/vp-listen
+    force: yes
   notify: vp-listen
   become: yes
 
+# Dump the configuration from the vaultfile
 - name: Configure the Listener service
-  ansible.buildin.template:
+  ansible.builtin.template:
     src: listen.yml.j2
     dest: /opt/vp-listen/listen.yml
   notify: vp-listen
   become: yes
 
+# Configure the systemd fiddly bits
 - name: Set up vp-listener service
   ansible.builtin.file:
     src: /opt/vp-listen/vp-listen.service
