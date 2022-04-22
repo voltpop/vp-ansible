@@ -1,0 +1,46 @@
+- name: Tear Down Mail
+  docker_compose:
+    project_src: "/opt/{{ client }}/mail"
+    state: absent
+
+- name: Start Mail
+  docker_compose:
+    project_src: "/opt/{{ client }}/mail"
+  register: output
+
+- debug:
+    var: output
+
+- name: Re-Compose Mail
+  docker_compose:
+    project_src: "/opt/{{ client }}/mail"
+    build: no
+  register: output
+
+- debug:
+    var: output
+
+- assert:
+    that: "not output.changed "
+
+- name: Stop Mail
+  docker_compose:
+    project_src: "/opt/{{ client }}/mail"
+    build: no
+    stopped: yes
+  register: output
+
+- debug:
+    var: output
+
+- assert:
+    that:
+      - "not web.flask_web_1.state.running"
+      - "not db.flask_db_1.state.running"
+
+- name: Restart Mail
+  docker_compose:
+    project_src: "/opt/{{ client }}/mail"
+    build: no
+    restarted: yes
+  register: output

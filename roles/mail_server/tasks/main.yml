@@ -1,0 +1,14 @@
+- name: Create Client
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: "/opt/{{ client }}/mail"
+    state: directory
+
+- name: Deploy Docker Compose file
+  become: true
+  become_user: root
+  template:
+    src: docker-compose.yml.j2
+    dest: "/opt/{{ client }}/mail/docker-compose.yml"
+  notify: Start Mail

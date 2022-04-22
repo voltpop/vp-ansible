@@ -1,0 +1,23 @@
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABAE: {{ postfix_db }} # postfixadmin
+      MYSQL_USER: {{ postfixdb_user }} # postfixadmin
+      MYSQL_PASSWORD: {{ postfixdb_pass }}
+
+  postfixadmin:
+    depends_on:
+      - db
+    image: postfixadmin
+    ports:
+      - 8000:80
+    restart: always
+    environment:
+      POSTFIXADMIN_DB_TYPE: mysqli
+      POSTFIXADMIN_DB_HOST: db
+      POSTFIXADMIN_DB_USER: "{{ postfixdb_user }}" # postfixadmin
+      POSTFIXADMIN_DB_NAME: "{{ postfix_db }}" # postfixadmin
+      POSTFIXADMIN_DB_PASSWORD: "{{ postfixdb_pass }}"
