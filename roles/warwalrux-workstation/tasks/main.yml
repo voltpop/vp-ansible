@@ -41,7 +41,7 @@
 - name: Check out Infrastructure Repositories
   ansible.builtin.git:
     name: "git@github.com:apache/{{ repo }}.git"
-    dest: "/homeo/dfoulks/Restore/asf/{{ repo }}"
+    dest: "/home/dfoulks/Restore/asf/{{ repo }}"
   with_items:
     - "infrastructure-puppet"
     - "infrastructure-p6"
