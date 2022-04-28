@@ -1,7 +1,9 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+https://www.infiproton.com/post/building-and-running-apache-ofbiz-image-on-docker
+
+This will deploy an OFbiz Instance. Hopefully it works out...
 
 Requirements
 ------------
