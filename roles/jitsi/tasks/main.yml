@@ -1,2 +1,17 @@
 ---
 # tasks file for jitsi
+#
+# TODO: see voltpop.com/blogs/jitsi/ for details.
+# Fetch the new version from github
+#   https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-{{ jitsi_version }}.tar.gz -> opt/
+#   unpack the tarfile in /opt
+#
+# copy env.example .env
+#
+# run gen-password.sh script in the root of the checkout
+#
+# docker-compose up the damned thing.
+#
+# deploy apache redirect
+#
+# Restart apache
