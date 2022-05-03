@@ -1,4 +1,4 @@
-Jitsi Set up
+VoltPop Jitsi Implementation
 =========
 
 Jitsi is an open source video conferencing solution that can be hosted in a docker instance.
@@ -6,10 +6,12 @@ Jitsi is an open source video conferencing solution that can be hosted in a dock
 Requirements
 ------------
 
+The value `jitsi` *must* appear in client.roles
+
 This role requires the following values:
-* jitsi_url
-* jitsi_ipaddr
-* jitsi_version
+* jitsi.url
+* jitsi.ipaddr
+* jitsi.version
 
 and is designed to run on a dockerhost.
 
@@ -26,15 +28,17 @@ This playbook depends on the continued maintenance of https://github.com/jitsi/d
 
 Example Playbook
 ----------------
+```
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: Include jitsi
+      include_role:
+        name: jitsi
+      vars:
+        customer: "{{ client }}"
+```
+Invocation:
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-APLv2
-
+`ansible-playbook /path/to/playbook -e varsfile="$ANSIBLE_HOME/vars/varsfile.yml" -K --ask-vault-pass`

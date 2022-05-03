@@ -1,38 +1,48 @@
-Role Name
+VoltPop NextCloud and Office Implementation
 =========
 
-A brief description of the role goes here.
+NextCloud and Collabora are both open source cloud friendly implementations of common productivity tools, including:
+* Shared calendars
+* File synchronization
+* File sharing and multi-tenant editing
+* Secure online file storage and upload
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The value `nextcloud` *must* appear in client.roles
+
+This role requires the following values:
+* nextcloud.url
+* nextcloud.ipaddr
+* nextcloud.version
+
+and is designed to run on a dockerhost.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+See requirements
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role depends on the continued maintenance of the docker images listed in files/docker-compose.yml
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: Include jitsi
+      include_role:
+        name: jitsi
+      vars:
+        customer: "{{ client }}"
+```
+Invocation:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+`ansible-playbook /path/to/playbook -e varsfile="$ANSIBLE_HOME/vars/varsfile.yml" -K --ask-vault-pass`
