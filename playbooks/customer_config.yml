@@ -1,0 +1,12 @@
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: Apply Roles
+      include_role: 
+        name: "{{ included_role }}"
+      vars:
+        customer: "{{ client }}"
+      with_items: "{{ client.roles }}"
+      loop_control:
+        loop_var: "included_role"
