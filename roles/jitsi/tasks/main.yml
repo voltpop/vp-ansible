@@ -4,12 +4,30 @@
 # TODO: see voltpop.com/blogs/jitsi/ for details.
 # Fetch the new version from github
 #   https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-{{ jitsi_version }}.tar.gz -> opt/
+
 #   unpack the tarfile in /opt
-#
+- name: "Fetch Jitsi Docker image"
+  ansible.builtin.unarchive:
+    src: "https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-{{ jitsi_verson }}.tar.gz"
+    dest: "/opt/jitsi"
+    remote_src: "yes"
+
+- name: "Create Service directory"
+  ansible.builtin.file:
+    src: "/opt/docker-jitsi-meet-stable-{{ jitsi_version }}"
+    dest: "/opt/jitsi"
+    state: "link"
+
 # copy env.example .env
-#
+- name: "Deploy env file"
+  ansible.builtin.template:
+    src: "env.example.j2"
+    dest: "/opt/jitsi/.env"
+
 # run gen-password.sh script in the root of the checkout
-#
+- name: "Set Passwords"
+  ansible.builtin.command: "/opt/jitsi/gen-passwords.sh"
+
 # docker-compose up the damned thing.
 #
 # deploy apache redirect
