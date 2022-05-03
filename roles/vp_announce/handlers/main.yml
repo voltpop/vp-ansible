@@ -1,0 +1,9 @@
+---
+# handlers file for docker-server
+- name: vp-announce
+  systemd:
+    daemon_reload: yes
+    state: started
+    enabled: yes
+    name: vp-announce
+  become: yes

@@ -1,0 +1,26 @@
+---
+# Fetch the Announcer service
+- name: Pull VoltPop Announcer Service git repo
+  ansible.builtin.git:
+    repo: https://github.com/voltpop/vp-announce
+    dest: "/opt/{{ customer.name }}/vp-announce"
+    force: yes
+  notify: vp-announce
+  become: yes
+
+# Dump the configuration from the vaultfile
+- name: Configure the Announcer service
+  ansible.builtin.copy:
+    content: "{{ customer.vars.announceer_config | to_nice_yaml }}"
+    dest: "/opt/{{ customer.name }}/vp-announce/announce.yml"
+  notify: vp-announce
+  become: yes
+
+# Configure the systemd fiddly bits
+- name: Set up vp-announce service
+  ansible.builtin.file:
+    src: "/opt/{{ customer.name }}/vp-announce/vp-announce.service"
+    dest: /etc/systemd/system/vp-announce.service
+    state: link
+  notify: vp-announce
+  become: yes
