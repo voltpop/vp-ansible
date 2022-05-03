@@ -1,9 +1,11 @@
 - name: Tear Down Mail
+  become: true
   docker_compose:
     project_src: "/opt/{{ client }}/mail"
     state: absent
 
 - name: Start Mail
+  become: true
   docker_compose:
     project_src: "/opt/{{ client }}/mail"
   register: output
@@ -12,6 +14,7 @@
     var: output
 
 - name: Re-Compose Mail
+  become: true
   docker_compose:
     project_src: "/opt/{{ client }}/mail"
     build: no
@@ -24,6 +27,7 @@
     that: "not output.changed "
 
 - name: Stop Mail
+  become: true
   docker_compose:
     project_src: "/opt/{{ client }}/mail"
     build: no
@@ -39,6 +43,7 @@
       - "not db.flask_db_1.state.running"
 
 - name: Restart Mail
+  become: true
   docker_compose:
     project_src: "/opt/{{ client }}/mail"
     build: no

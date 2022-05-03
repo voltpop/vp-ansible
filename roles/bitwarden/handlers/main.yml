@@ -1,2 +1,51 @@
----
-# handlers file for bitwarden
+- name: Tear Down BitWarden
+  become: true
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/bitwarden/docker"
+    state: absent
+
+- name: Start BitWarden
+  become: true
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/bitwarden/docker"
+  register: output
+
+- debug:
+    var: output
+
+- name: Re-Compose BitWarden
+  become: true
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/bitwarden/docker"
+    build: no
+  register: output
+
+- debug:
+    var: output
+
+- assert:
+    that: "not output.changed "
+
+- name: Stop BitWarden
+  become: true
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/bitwarden/docker"
+    build: no
+    stopped: yes
+  register: output
+
+- debug:
+    var: output
+
+- assert:
+    that:
+      - "not web.flask_web_1.state.running"
+      - "not db.flask_db_1.state.running"
+
+- name: Restart BitWarden
+  become: true
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/bitwarden/docker"
+    build: no
+    restarted: yes
+  register: output

@@ -1,15 +1,17 @@
-VoltPop Bitwarden Implementation
+VoltPop Jitsi Implementation
 =========
 
-BitWarden is an open source password management solution that can be hosted in a docker instance.
+Jitsi is an open source video conferencing solution that can be hosted in a docker instance.
 
 Requirements
 ------------
 
-The value `bitwarden` *must* appear in client.roles
+The value `jitsi` *must* appear in client.roles
 
 This role requires the following values:
-* bitwarden.version
+* jitsi.url
+* jitsi.ipaddr
+* jitsi.version
 
 and is designed to run on a dockerhost.
 
@@ -31,9 +33,9 @@ Example Playbook
   vars_files:
     - "{{ varsfile }}"
   tasks:
-    - name: Include BitWarden
+    - name: Include jitsi
       include_role:
-        name: bitwarden
+        name: jitsi
       vars:
         customer: "{{ client }}"
 ```

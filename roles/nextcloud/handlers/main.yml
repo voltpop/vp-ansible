@@ -1,9 +1,11 @@
 - name: Tear Down NextCloud
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/nextcloud"
     state: absent
 
 - name: Start NextCloud
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/nextcloud"
   register: output
@@ -12,6 +14,7 @@
     var: output
 
 - name: Re-Compose NextCloud
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/nextcloud"
     build: no
@@ -24,6 +27,7 @@
     that: "not output.changed "
 
 - name: Stop NextCloud
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/nextcloud"
     build: no
@@ -39,6 +43,7 @@
 #      - "not db.flask_db_1.state.running"
 
 - name: Restart NextCloud
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/nextcloud"
     build: no

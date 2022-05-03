@@ -1,9 +1,11 @@
 - name: Tear Down Jitsi
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/jitsi"
     state: absent
 
 - name: Start Jitsi
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/jitsi"
   register: output
@@ -12,6 +14,7 @@
     var: output
 
 - name: Re-Compose Jitsi
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/jitsi"
     build: no
@@ -24,6 +27,7 @@
     that: "not output.changed "
 
 - name: Stop Jitsi
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/jitsi"
     build: no
@@ -39,6 +43,7 @@
       - "not db.flask_db_1.state.running"
 
 - name: Restart Jitsi
+  become: true
   docker_compose:
     project_src: "/opt/{{ customer.name }}/jitsi"
     build: no
