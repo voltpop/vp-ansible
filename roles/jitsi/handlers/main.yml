@@ -1,2 +1,46 @@
----
-# handlers file for jitsi
+- name: Tear Down Jitsi
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/jitsi"
+    state: absent
+
+- name: Start Jitsi
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/jitsi"
+  register: output
+
+- debug:
+    var: output
+
+- name: Re-Compose Jitsi
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/jitsi"
+    build: no
+  register: output
+
+- debug:
+    var: output
+
+- assert:
+    that: "not output.changed "
+
+- name: Stop Jitsi
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/jitsi"
+    build: no
+    stopped: yes
+  register: output
+
+- debug:
+    var: output
+
+- assert:
+    that:
+      - "not web.flask_web_1.state.running"
+      - "not db.flask_db_1.state.running"
+
+- name: Restart Jitsi
+  docker_compose:
+    project_src: "/opt/{{ customer.name }}/jitsi"
+    build: no
+    restarted: yes
+  register: output

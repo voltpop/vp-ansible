@@ -2,11 +2,8 @@
   vars_files:
     - "{{ varsfile }}"
   tasks:
-      - name: mail server testing
-        include_role: 
-          name: mail_server
-        vars:
-            client: "{{ client.name }}"
-          postfix_db: "{{ client.vars.postfix.db }}"
-          postfixdb_user: "{{ client.vars.postfix.db_user }}"
-          postfixdb_pass: "{{ client.vars.postfix.db_pass }}"
+    - name: mail server testing
+      include_role: 
+        name: postfix
+      vars:
+        customer: "{{ client }}"

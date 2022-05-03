@@ -4,9 +4,9 @@ services:
     restart: always
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_DATABAE: {{ postfix_db }} # postfixadmin
-      MYSQL_USER: {{ postfixdb_user }} # postfixadmin
-      MYSQL_PASSWORD: {{ postfixdb_pass }}
+      MYSQL_DATABAE: "{{ customer.vars.postfix.db }}" # postfixadmin
+      MYSQL_USER: "{{ customer.vars.postfix.db_user }}" # postfixadmin
+      MYSQL_PASSWORD: "{{ customer.vars.postfix.db_pass }}"
 
   postfixadmin:
     depends_on:
@@ -18,6 +18,6 @@ services:
     environment:
       POSTFIXADMIN_DB_TYPE: mysqli
       POSTFIXADMIN_DB_HOST: db
-      POSTFIXADMIN_DB_USER: "{{ postfixdb_user }}" # postfixadmin
-      POSTFIXADMIN_DB_NAME: "{{ postfix_db }}" # postfixadmin
-      POSTFIXADMIN_DB_PASSWORD: "{{ postfixdb_pass }}"
+      POSTFIXADMIN_DB_USER: "{{ customer.vars.postfix.db_user }}" # postfixadmin
+      POSTFIXADMIN_DB_NAME: "{{ customer.vars.postfix.db }}" # postfixadmin
+      POSTFIXADMIN_DB_PASSWORD: "{{ customer.vars.postfix.db_pass }}"

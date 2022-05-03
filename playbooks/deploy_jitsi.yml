@@ -2,15 +2,8 @@
   vars_files:
     - "{{ varsfile }}"
   tasks:
-    - name: print things
-      debug:
-        msg: "{{ client }}"
-
     - name: jitsi server testing
       include_role: 
         name: jitsi
       vars:
-        customer: "{{ client.name }}"
-        jitsi_ipaddr: "{{ client.vars.jitsi.ipaddr }}"
-        jitsi_url: "{{ client.vars.jitsi.url }}"
-        jitsi_version: "{{ client.vars.jitsi.version }}"
+        customer: "{{ client }}"
