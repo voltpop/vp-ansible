@@ -12,9 +12,13 @@ TL;DR: This is ansible in a pipenv
 
 ## Ansible + Pipenv
 
-[Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started) is a pfawesome automation and configuration management solution. A (Pipenv)[https://pipenv.pypa.io/en/latest/] is a python3 environment which encapsulates all of the necessary packages and bits and keeps them in sync.
+[Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started) is a pfawesome automation and configuration management solution. A [Pipenv](https://pipenv.pypa.io/en/latest/) is a python3 environment which encapsulates all of the necessary packages and bits and keeps them in sync.
 
 ### Pipenv usage
+
+To configure the environment (typically on download), run:
+
+`pipenv install`
 
 To start a shell in the pyton environment, run:
 
@@ -23,6 +27,10 @@ To start a shell in the pyton environment, run:
 To run a single one off in the python3 environment, run:
 
 `pipenv run <COMMAND>`
+
+If, in the course of development you find that you need to extend Ansible with a Python module, add it to the `Pipfile` and re-run:
+
+`pipenv install`
 
 ## Pub/Sub 
 
@@ -44,5 +52,3 @@ This service is wrapped in pipenv, requiring only git and python3 to be present 
 To run an interactive development shell, use `pipenv shell`
 
 This will create a local development / running environment with all of the software pre-configured.
-
-For more information about pipenv, see: https://pipenv.pypa.io/en/latest/
