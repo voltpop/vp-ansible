@@ -52,5 +52,3 @@ This service is wrapped in pipenv, requiring only git and python3 to be present 
 To run an interactive development shell, use `pipenv shell`
 
 This will create a local development / running environment with all of the software pre-configured.
-
-For more information about pipenv, see: https://pipenv.pypa.io/en/latest/
