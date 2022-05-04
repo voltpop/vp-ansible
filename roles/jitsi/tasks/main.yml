@@ -11,7 +11,7 @@
   become: true
   become_user: root
   ansible.builtin.file:
-    path: "/opt/{{ customer.name }}"
+    path: "/opt/{{ customer.name }}/tmp"
     state: directory
 
 #   unpack the tarfile in /opt
@@ -19,13 +19,13 @@
   become: true
   ansible.builtin.unarchive:
     src: "https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-{{ customer.vars.jitsi.version }}.tar.gz"
-    dest: "/opt/{{ customer.name }}"
+    dest: "/opt/{{ customer.name }}/tmp"
     remote_src: "yes"
 
 - name: "Create Service directory"
   become: true
   ansible.builtin.file:
-    src: "/opt/{{ customer.name }}/docker-jitsi-meet-stable-{{ customer.vars.jitsi.version }}"
+    src: "/opt/{{ customer.name }}/tmp/docker-jitsi-meet-stable-{{ customer.vars.jitsi.version }}"
     dest: "/opt/{{ customer.name }}/jitsi"
     state: "link"
 

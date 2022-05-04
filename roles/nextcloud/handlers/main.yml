@@ -37,11 +37,6 @@
 - debug:
     var: output
 
-#- assert:
-#    that:
-#      - "not web.flask_web_1.state.running"
-#      - "not db.flask_db_1.state.running"
-
 - name: Restart NextCloud
   become: true
   docker_compose:

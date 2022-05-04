@@ -1,0 +1,15 @@
+- assert:
+    that: "not output.changed "
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: Re-Compose Nextcloud
+      become: true
+      docker_compose:
+        project_src: "/opt/{{ client.name }}/nextcloud"
+        build: no
+      register: output
+    
+    - debug:
+        var: output

@@ -2,7 +2,7 @@
   become: true
   become_user: root
   ansible.builtin.file:
-    path: "/opt/{{ customer.name }}/mail"
+    path: "/opt/{{ customer.name }}/postfix"
     state: directory
 
 - name: Deploy Docker Compose file
@@ -10,5 +10,5 @@
   become_user: root
   template:
     src: docker-compose.yml.j2
-    dest: "/opt/{{ customer.name }}/mail/docker-compose.yml"
+    dest: "/opt/{{ customer.name }}/postfix/docker-compose.yml"
   notify: Start Mail
