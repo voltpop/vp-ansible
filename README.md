@@ -16,6 +16,10 @@ TL;DR: This is ansible in a pipenv
 
 ### Pipenv usage
 
+To configure the environment (typically on download), run:
+
+`pipenv install`
+
 To start a shell in the pyton environment, run:
 
 `pipenv shell`
@@ -23,6 +27,10 @@ To start a shell in the pyton environment, run:
 To run a single one off in the python3 environment, run:
 
 `pipenv run <COMMAND>`
+
+If, in the course of development you find that you need to extend Ansible with a Python module, add it to the `Pipfile` and re-run:
+
+`pipenv install`
 
 ## Pub/Sub 
 
