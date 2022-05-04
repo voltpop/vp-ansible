@@ -12,7 +12,7 @@ TL;DR: This is ansible in a pipenv
 
 ## Ansible + Pipenv
 
-[Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started) is a pfawesome automation and configuration management solution. A (Pipenv)[https://pipenv.pypa.io/en/latest/] is a python3 environment which encapsulates all of the necessary packages and bits and keeps them in sync.
+[Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started) is a pfawesome automation and configuration management solution. A [Pipenv](https://pipenv.pypa.io/en/latest/) is a python3 environment which encapsulates all of the necessary packages and bits and keeps them in sync.
 
 ### Pipenv usage
 
