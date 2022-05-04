@@ -7,9 +7,12 @@ Requirements
 ------------
 
 The value `bitwarden` *must* appear in client.roles
+An Installation ID and Installation key must be obtained from https://bitwarden.com/host/ 
 
 This role requires the following values:
 * bitwarden.version
+* bitwarden.installation_id
+* bitwarden.installation_key
 
 and is designed to run on a dockerhost.
 
