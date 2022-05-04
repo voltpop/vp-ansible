@@ -1,0 +1,9 @@
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: Tear Down Jitsi
+      become: true
+      docker_compose:
+        project_src: "/opt/{{ customer.name }}/jitsi"
+        state: absent

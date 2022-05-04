@@ -1,0 +1,27 @@
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: "Bitwarden Server teardown"
+      become: true
+      ansible.builtin.expect:
+        command: "/opt/{{ client.name }}/bitwarden/bitwarden.sh uninstall"
+        responses:
+          save the database files?:
+          - "y"
+          uninstall Bitwarden?:
+          - "y"
+          container images?:
+          - "y"
+  
+    - name: Retrieve Bitwarden Backup
+      become: true
+      ansible.builtin.fetch:
+        src: "/opt/{{ client.name }}/bitwarden/bitwarden_database.tar.gz"
+        dest: "/tmp/{{ client.name}}-bitwarden_database.tgz"
+  
+    - name: Clean up Bitwarden artifacts
+      become: true
+      ansible.builtin.file:
+        path: "/opt/{{ client.name }}/bitwarden"
+        state: absent

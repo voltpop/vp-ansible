@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 ansible = "*"
 docker-compose = "*"
+pexpect = "*"
 
 [dev-packages]
 

@@ -1,0 +1,5 @@
+dockerhosts:
+  hosts:
+    docker-vm1.voltpop.com:
+      clients:
+        - "voltpop"

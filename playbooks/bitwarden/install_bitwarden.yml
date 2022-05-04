@@ -2,8 +2,8 @@
   vars_files:
     - "{{ varsfile }}"
   tasks:
-    - name: jitsi server testing
+    - name: Install Bitwarden
       include_role: 
-        name: jitsi
+        name: bitwarden
       vars:
         customer: "{{ client }}"
