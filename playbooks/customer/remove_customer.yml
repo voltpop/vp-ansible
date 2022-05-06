@@ -1,0 +1,17 @@
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: Backup Customer data
+      become: yes
+      community.general.archive:
+        path: "/opt/{{ client.name }}/"
+        dest: "/opt/{{ client.name }}.zip"
+        remove: yes
+        format: zip
+
+    - name: Fetch Backup
+      become: yes
+      ansible.builtin.fetch:
+        src: "/opt/{{ client.name }}.zip"
+        dest: "/home/dfoulks/Projects/voltpop/vp-ansible/tmp" 
