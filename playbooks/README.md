@@ -5,7 +5,7 @@
 VoltPop's Ansible Playbooks all use the same invocation scheme:
 
 ```
-ansible-playbook playbooks/<service>/<operation>_<service>.yml --extra-vars varsfile=vars/<clientname>.yml --ask-become-password --ask-vault-password
+ansible-playbook playbooks/<consumer>/service/<service>/<operation>_<service>.yml --extra-vars varsfile=vars/<clientname>.yml --ask-become-password --ask-vault-password
 ```
 
 These playbooks are to be used to manage the client services.
