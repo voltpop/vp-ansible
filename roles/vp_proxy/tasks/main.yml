@@ -1,2 +1,19 @@
----
 # tasks file for vp_proxy
+
+- name: "Initialize customer service dir"
+  become: yes
+  ansible.builtin.file:
+    path: "/opt/{{ customer.name }}/proxy"
+    state: directory
+
+- name: "deploy apache site file"
+  become: yes
+  ansible.builtin.template:
+    src: "templates/{{ service }}_virtualHost.j2"
+    dest: "/opt/{{ customer.name }}/proxy/{{customer.name}}-{{ service }}"
+  with_items:
+    - "{{ customer.roles }}"
+  loop_control:
+    loop_var: service
+
+

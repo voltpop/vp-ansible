@@ -34,6 +34,7 @@
       self-signed SSL certificate?:
         - "y"
   notify: Start Bitwarden
+
 ##   unpack the tarfile in /opt
 #- name: "Fetch Bitwarden Docker stub"
 #  become: true

@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  vars_files:
+    - "{{ varsfile }}"
+  tasks:
+    - name: "Configure VoltPop Proxy Server"
+      include_role:
+        name: vp_proxy
+      vars:
+        customer: "{{ client }}"

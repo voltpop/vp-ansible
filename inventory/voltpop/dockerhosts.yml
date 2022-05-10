@@ -3,3 +3,6 @@ dockerhosts:
     docker-vm1.voltpop.com:
       clients:
         - "voltpop"
+      unfriendly_service_urls:
+        bitwarden: "http://localhost/#/"
+
