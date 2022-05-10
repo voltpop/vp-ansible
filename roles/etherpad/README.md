@@ -1,5 +1,6 @@
 Role Name
 =========
+https://github.com/uni-halle/etherpad-lite-docker
 
 A brief description of the role goes here.
 
