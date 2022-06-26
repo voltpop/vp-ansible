@@ -4,20 +4,14 @@
   tasks:
     - name: Stop Bitwarden
       become: true
-      ansible.builtin.expect:
-        command: "/opt/{{ customer.name }}/bitwarden/bitwarden.sh stop"
-      responses:
-          database files? (y/n):
-          - "y"
+      command: "/opt/{{ client.name }}/bitwarden/bitwarden.sh stop"
       tags:
         - stop
+        - restart
     
     - name: Start Bitwarden
       become: true
-      ansible.builtin.expect:
-        command: "/opt/{{ customer.name }}/bitwarden/bitwarden.sh start"
-      responses:
-          database files? (y/n):
-          - "y"
+      command: "/opt/{{ client.name }}/bitwarden/bitwarden.sh start"
       tags:
         - start
+        - restart

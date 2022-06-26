@@ -1,9 +1,0 @@
-- hosts: localhost
-  vars_files:
-    - "{{ varsfile }}"
-  tasks:
-    - name: mail server testing
-      include_role: 
-        name: postfix
-      vars:
-        customer: "{{ client }}"

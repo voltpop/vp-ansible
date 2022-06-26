@@ -23,6 +23,8 @@
     responses:
       bitwarden.example.com:
         - "{{ customer.vars.bitwarden.url }}"
+      Let's Encrypt:
+        - "n"
       vault:
         - "{{ customer.vars.bitwarden.db }}"
       installation id:
@@ -34,36 +36,3 @@
       self-signed SSL certificate?:
         - "y"
   notify: Start Bitwarden
-
-##   unpack the tarfile in /opt
-#- name: "Fetch Bitwarden Docker stub"
-#  become: true
-#  ansible.builtin.get_url:
-#    url: "https://github.com/bitwarden/server/releases/download/{{ customer.vars.bitwarden.version }}/docker-stub.zip"
-#    dest: "/opt/{{ customer.name }}/bitwarden/tmp"
-#
-#- name: "Expand Bitwarden docker artifacts"
-#  become: true
-#  ansible.builtin.unarchive:
-#    src: "/opt/{{ customer.name }}/bitwarden/tmp/docker-stub.zip"
-#    dest: "/opt/{{ customer.name }}/bitwarden"
-#    remote_src: yes
-#  notify: Start BitWarden
-#
-#- name: "Remove tmp cruft"
-#  become: true
-#  ansible.builtin.file:
-#    path: "/opt/{{ customer.name }}/bitwarden/tmp/"
-#    state: absent
-
-## copy env.example .env
-#- name: "Deploy env file"
-#  become: true
-#  ansible.builtin.template:
-#    src: "env.example.j2"
-#    dest: "/opt/{{ customer.name }}/jitsi/.env"
-#  notify: Start Jitsi
-#
-# deploy apache redirect
-#
-# Restart apache

@@ -1,7 +1,7 @@
 # VoltPop Ansible Roles
 ## Customer Services
 
-### bitwarden
+### Bitwarden
 #### About
 The Bitwarden role deploys a docker-composed instance of a bitwarden stack
 
@@ -9,7 +9,7 @@ The Bitwarden role deploys a docker-composed instance of a bitwarden stack
 DF - I tested this locally and it seems to work at localhost/#/
 ---
 
-### jitsi
+### Jitsi
 #### About
 The Jitsi role deploys a docker-composed instance of a Jitsi stack
 
@@ -17,7 +17,7 @@ The Jitsi role deploys a docker-composed instance of a Jitsi stack
 DF - I tested this locally and it works at localhost:8000
 ---
 
-### nextcloud
+### Nextcloud
 #### About
 The NextCloud role deploys a docker-composed instance of the NextCloud stack
 
@@ -25,18 +25,22 @@ The NextCloud role deploys a docker-composed instance of the NextCloud stack
 DF - I test this locally and it works at localhost
 ---
 
-### ofbiz
+### OFBiz?
 NO PROGRESS 
 ---
 
-### postfix
+### Jekyll Websites
 #### About
-The PostFix role deploys a docker-composed instance of the PostFix Mail server
+Jekyll is a ruby based markdown converter for static webpage generation. Leveraging its robust plugin ecosystem we can make a wide variety of websites quickly.
 
 #### Testing
-DF - I need to keep testing the deployment here, I can get postfix to docker-compose up, but I need to test functionality and configuration as well.
----
- 
+DF - See netlify + voltpop.com assets for jekyll example.
+
+### Webhook target
+#### About
+
+Voltpop intends to have a webhook target service available for companies to use.
+
 ## VoltPop Consumed Services
 ### vp_docker
 
