@@ -1,3 +1,6 @@
 [submodule "vp-listen"]
 	path = vp-listen
 	url = https://github.com/voltpop/vp-listen
+[submodule "roles"]
+	path = roles
+	url = https://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@github.com/voltpop/roles
