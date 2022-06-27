@@ -14,6 +14,17 @@ TL;DR: This is ansible in a pipenv
 
 [Ansible](https://docs.ansible.com/ansible/latest/user_guide/index.html#getting-started) is a pfawesome automation and configuration management solution. A [Pipenv](https://pipenv.pypa.io/en/latest/) is a python3 environment which encapsulates all of the necessary packages and bits and keeps them in sync.
 
+### Submodules
+
+The ansible environment uses three submodules for security purposes:
+* roles
+* playbooks
+* vars
+
+are each independent repositories. in order to initialize these modules, run:
+
+`git submodule update --init`
+
 ### Pipenv usage
 
 To configure the environment (typically on download), run:
