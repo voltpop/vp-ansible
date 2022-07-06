@@ -1,9 +1,0 @@
-- hosts: localhost
-  vars_files:
-    - "{{ varsfile }}"
-  tasks:
-    - name: Install Jitsi
-      include_role: 
-        name: jitsi
-      vars:
-        customer: "{{ client }}"

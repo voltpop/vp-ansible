@@ -1,9 +1,0 @@
-- hosts: localhost
-  vars_files:
-    - "{{ varsfile }}"
-  tasks:
-    - name: Install Bitwarden
-      include_role: 
-        name: bitwarden
-      vars:
-        customer: "{{ client }}"

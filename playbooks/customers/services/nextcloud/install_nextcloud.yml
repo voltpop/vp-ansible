@@ -1,9 +1,0 @@
-- hosts: localhost
-  vars_files:
-    - "{{ varsfile }}"
-  tasks:
-    - name: Install Nextcloud
-      include_role: 
-        name: nextcloud
-      vars:
-        customer: "{{ client }}"
