@@ -1,0 +1,20 @@
+---
+# Run playbook with --extra-vars to provide:
+# - keyname   // the desired ssh key to use
+# - type      // the desired ec2 instance type
+- hosts: "localhost"
+  vars:
+    region: "us-east-1"
+    ami_id: "ami-04505e74c0741db8d" # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
+  tasks:
+    - name: Launch Instance
+      amazon.aws.ec2_instance:
+        name: "test"
+        key_name: "{{ keyname }}"
+        instance_type: "{{ type }}"
+        image_id: "{{ ami_id }}"
+        wait: yes
+        count: 1
+        region: "{{ region }}"
+      tags:
+        - "launch"

@@ -7,7 +7,7 @@ name = "pypi"
 ansible = "*"
 docker-compose = "*"
 pexpect = "*"
-
+boto3 = "*"
 [dev-packages]
 
 [requires]
