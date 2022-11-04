@@ -17,5 +17,4 @@
       vars:
         name: "{{ name }}"
 
-#- hosts: "{{ name }}.apache.org"
-#  tasks:
+

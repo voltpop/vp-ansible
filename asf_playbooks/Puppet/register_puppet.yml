@@ -3,7 +3,6 @@
 # - name  // friendly name of the host to be joined to puppet.
 
 - hosts: "pm01-lw-us.apache.org"
-  vars:
   tasks:
     - name: Register VM with Pupper
       become: yes
