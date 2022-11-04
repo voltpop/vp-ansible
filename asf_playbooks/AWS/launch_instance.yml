@@ -1,7 +1,8 @@
 ---
 # Run playbook with --extra-vars to provide:
-# - keyname   // the desired ssh key to use
+# - sshkey   // the desired ssh key to use
 # - type      // the desired ec2 instance type
+# - name      // VM name
 - hosts: "localhost"
   vars:
     region: "us-east-1"
@@ -9,8 +10,8 @@
   tasks:
     - name: Launch Instance
       amazon.aws.ec2_instance:
-        name: "test"
-        key_name: "{{ keyname }}"
+        name: "{{ name }}"
+        key_name: "{{ sshkey }}"
         instance_type: "{{ type }}"
         image_id: "{{ ami_id }}"
         wait: yes

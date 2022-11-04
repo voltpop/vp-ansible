@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+import requests
+import yaml
+
+def printer(data):
+    print([datum for datum in data])
+
+r = yaml.safe_load(requests.get('https://svn.apache.org/repos/infra/infrastructure/trunk/dns/zones/inventory.yaml').content.decode('utf8'))
+print(r)

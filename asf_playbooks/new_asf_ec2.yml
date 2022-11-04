@@ -1,0 +1,21 @@
+---
+# Supply extra vars with -e / --extra-vars
+# - sshkey
+# - type
+# - name
+- hosts: localhost
+  tasks:
+    - name: "Include AWS Instance Launch"
+      import_playbook: AWS/launch-instance.yml
+      vars:
+        sshkey: "{{ sshkey }}"
+        type: "{{ type }}"
+        name: "{{ name }}"
+
+    - name: "Register with Puppet"
+      import_playbook: Puppet/register_node.yml
+      vars:
+        name: "{{ name }}"
+
+#- hosts: "{{ name }}.apache.org"
+#  tasks:
