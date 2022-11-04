@@ -1,0 +1,10 @@
+---
+# Will need to pass the following with -e / --extra-vars
+# - name  // friendly name of the host to be joined to puppet.
+
+- hosts: "pm01-lw-us.apache.org"
+  vars:
+  tasks:
+    - name: Register VM with Pupper
+      become: yes
+      shell: "puppetserver ca sign --certname {{ name }}.apache.org"
